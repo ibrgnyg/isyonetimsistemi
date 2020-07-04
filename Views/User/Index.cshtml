@@ -1,0 +1,51 @@
+﻿@model   IEnumerable<AppUser>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.UserName)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Email)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.LoginDate)
+			</th>
+
+
+
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+
+
+				<td>
+					 @item.UserName
+				</td>
+
+				<td>
+					@item.Email
+				</td>
+				<td>
+					@item.LoginDate.ToString("MM/dd/yyy")
+				</td>
+
+				<td>
+					<a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+					<a asp-action="userdetail" asp-route-id="@item.Id">Details</a>
+					<a asp-action="Delete" asp-route-id="@item.Id" asp-controller="mission">Delete</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

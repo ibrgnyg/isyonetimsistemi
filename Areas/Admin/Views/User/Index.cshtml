@@ -1,0 +1,68 @@
+﻿@model IEnumerable<ısyonetimsistemi.Models.AppUser>
+@using ısyonetimsistemi.Areas.Admin.Helper;
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Areas/Admin/Shared/_Layout.cshtml1";
+}
+
+@{
+	int number = 0;
+}
+
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				#
+			</th>
+			<th>
+				Email
+			</th>
+			<th>
+				Giriş Yapma Tarihi
+			</th>
+
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+		<tr>
+			<td>
+				@(number = +1)
+			</td>
+			<td>
+				@item.Email
+			</td>
+
+			<td>
+				@item.LoginDate.TimeHelper()
+			</td>
+
+			<td></td>
+			<td>
+
+				<a href="/userdetai/@item.Id">
+					<p>detay</p>
+				</a>
+
+			</td>
+
+
+			<td>
+				@Html.ActionLink("detay", "UserDetail", new { item.Id })
+			</td>
+
+			<td>
+				@Html.ActionLink("Sil", "UserDelete", new { item.Id })
+			</td>
+			<td>
+				<a asp-action="UserDelete" asp-route-id="@item.Id" class="btn btn-sm btn-danger" onclick="return confirm('Silmek istediğinize emin misiniz?');">Sil</a>
+			</td>
+
+		</tr>
+		}
+	</tbody>
+</table>

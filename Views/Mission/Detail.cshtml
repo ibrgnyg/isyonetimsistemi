@@ -1,0 +1,239 @@
+﻿@model ısyonetimsistemi.Models.Mission
+
+@{
+	ViewData["Title"] = "Detail";
+}
+
+<h1>Detail</h1>
+
+<div>
+	<h4>Mission</h4>
+	<hr />
+	<dl class="row">
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.ProjectName)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.ProjectName)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Description)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.Raw(Model.Description)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Progress)
+		</dt>
+		<dd class="col-sm-10">
+			<div class="progress">
+				<div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 35%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">@Model.Progress</div>
+
+			</div>
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Projectİcon)
+		</dt>
+		<dd class="col-sm-10">
+			@if (Model.Projectİcon != null)
+			{
+				<img src="~/İcon/@Model.Projectİcon" height="100" width="100" />
+			}
+			else
+			{
+				<img src="https://1.bp.blogspot.com/-oyAfEsMsJ4Q/WcVfj53P4XI/AAAAAAAAAtQ/iro-FXDybmYa2wd_MClUo9ViQsOlomu7QCLcBGAs/s1600/null_logomark_400x400.jpg" height="100" width="100" />
+			}
+
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.SyncProgress)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.SyncProgress)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.CategorryId)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.CategorryId)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.User)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.User.Id)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.CreatedDate)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.CreatedDate)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.UpdateDate)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.UpdateDate)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.CreatedBy)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.CreatedBy)
+		</dd>
+	</dl>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="panel panel-default widget">
+			<div class="panel-heading">
+				<span class="glyphicon glyphicon-comment"></span>
+				<h3 class="panel-title">
+					Recent Comments
+				</h3>
+
+				@if (Model.Chats != null)
+				{
+					<span class="label label-info">@Model.Chats.Count</span>
+				}
+
+
+			</div>
+			<div class="panel-body">
+				<ul class="list-group">
+					<li class="list-group-item">
+						<div class="row">
+							<div class="col-xs-2 col-md-1">
+								<img src="http://placehold.it/80" class="img-circle img-responsive" alt="" />
+							</div>
+							<div class="col-xs-10 col-md-11">
+								<div>
+									<a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
+										Google Style Login Page Design Using Bootstrap
+									</a>
+									<div class="mic-info">
+										By: <a href="#">Bhaumik Patel</a> on 2 Aug 2013
+									</div>
+								</div>
+								<div class="comment-text">
+									Awesome design
+								</div>
+								<div class="action">
+									<button type="button" class="btn btn-primary btn-xs" title="Edit">
+										<span class="glyphicon glyphicon-pencil"></span>
+									</button>
+									<button type="button" class="btn btn-success btn-xs" title="Approved">
+										<span class="glyphicon glyphicon-ok"></span>
+									</button>
+									<button type="button" class="btn btn-danger btn-xs" title="Delete">
+										<span class="glyphicon glyphicon-trash"></span>
+									</button>
+								</div>
+							</div>
+						</div>
+					</li>
+
+					<li class="list-group-item">
+						<div class="row">
+							<div class="col-xs-2 col-md-1">
+								<img src="http://placehold.it/80" class="img-circle img-responsive" alt="" />
+							</div>
+							<div class="col-xs-10 col-md-11">
+								@if (Model.Chats != null)
+								{
+									@foreach (var item in Model.Chats)
+									{
+
+										<div>
+											<a href="http://bootsnipp.com/BhaumikPatel/snippets/4ldn">Cool Sign Up</a>
+											<div class="mic-info">
+												By: <a href="#">Bhaumik Patel</a>@item.CreatedDate
+											</div>
+										</div>
+										<div class="comment-text">
+											@item.Description
+										</div>
+										<div class="action">
+											<button type="button" class="btn btn-primary btn-xs" title="Edit">
+												<span class="glyphicon glyphicon-pencil"></span>
+											</button>
+											<button type="button" class="btn btn-success btn-xs" title="Approved">
+												<span class="glyphicon glyphicon-ok"></span>
+											</button>
+											<a asp-action="Delete" asp-controller="Chat" asp-route-id="@item.Id">
+
+												<button type="button" class="btn btn-danger btn-xs" title="Delete">
+													<span class="glyphicon glyphicon-trash"></span>
+												</button>
+											</a>
+
+										</div>
+
+
+									}
+								}
+
+
+							</div>
+						</div>
+					</li>
+				</ul>
+				<div class="contact-form-area">
+					<form asp-action="AddMessage" asp-controller="Chat">
+
+						<div class="contact-form-area">
+
+							<div class="row">
+								<input type="hidden" id="_ID" value="@Model.Id" />
+								<div class="col-12">
+									<div class="form-group">
+										<input id="_Description" name="_Description" class="form-control" placeholder="add message" height="55">
+									</div>
+								</div>
+								<div class="col-11">
+									<button class="btn btn-primary" type="submit" id="addMessage">Yorum Gönder</button>
+								</div>
+							</div>
+
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div>
+	<a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+	<a asp-action="Index">Back to List</a>
+</div>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script>
+	$(document).ready(function () {
+
+
+		$(document).on("click", "#addMessage", function () {
+			var comment = $("#_Description").val();
+			var missionID = $("#_ID").val();
+			$.ajax({
+				url: '@Url.Action("AddMessage", "Chat")',
+				type: "POST",
+				data: { _Description: comment, _ID: missionID },
+				success: function (response) {
+					location.reload();
+				}
+			});
+
+
+		});
+
+
+	});
+
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

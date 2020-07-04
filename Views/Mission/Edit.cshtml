@@ -1,0 +1,53 @@
+﻿@model ısyonetimsistemi.Models.Mission
+
+@{
+	ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Mission</h4>
+<hr />
+<div class="row">
+	<div class="col-md-4">
+		<form asp-action="Edit">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<input type="hidden" asp-for="Id" />
+			<div class="form-group">
+				<label asp-for="ProjectName" class="control-label"></label>
+				<input asp-for="ProjectName" class="form-control" />
+				<span asp-validation-for="ProjectName" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label for="recipient-name" class="col-form-label">Description</label>
+				<textarea type="text" class="form-control" name="" asp-for="Description"></textarea>
+			</div>
+			<div class="form-group">
+				<label asp-for="Progress" class="control-label"></label>
+				<input asp-for="Progress" class="form-control" />
+				<span asp-validation-for="Progress" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Projectİcon" class="control-label"></label>
+				<input asp-for="Projectİcon" class="form-control" type="file" />
+			</div>
+			<div class="form-group form-check">
+				<label class="form-check-label">
+					<input class="form-check-input" asp-for="SyncProgress" /> @Html.DisplayNameFor(model => model.SyncProgress)
+				</label>
+			</div>
+
+
+			<div class="form-group">
+				<input type="submit" value="Save" class="btn btn-primary" />
+			</div>
+		</form>
+	</div>
+</div>
+
+<div>
+	<a asp-action="Index">Back to List</a>
+</div>
+
+<script src="~/ckeditor/ckeditor.js"></script>
+<script type="text/javascript">CKEDITOR.replace('_Description');</script>

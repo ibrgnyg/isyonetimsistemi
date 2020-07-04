@@ -1,0 +1,78 @@
+﻿@model IEnumerable<ısyonetimsistemi.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Shared/_Layout.cshtml1";
+}
+
+<h1>Index</h1>
+<div>
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">yeni</button>
+</div>
+<br>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {item.Id }) 
+                @Html.ActionLink("Delete", "Delete", new { item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">New message</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+
+				<a href="/category/create">
+
+				</a>
+				<form method="post" asp-action="Create" asp-controller="Category">
+	
+					<div class="form-group">
+						<label for="recipient-name" class="col-form-label">Name</label>
+						<input type="text" class="form-control" id="_Name" name="_Name">
+					</div>
+					<div class="form-group">
+						<label for="message-text" class="col-form-label">Color</label>
+						<input class="form-control" id="_Color" name="_Color" type="color" />
+					</div>
+					<input  value="create" class="btn-dark" type="submit"/>
+				</form>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			
+			</div>
+		</div>
+	</div>
+</div>

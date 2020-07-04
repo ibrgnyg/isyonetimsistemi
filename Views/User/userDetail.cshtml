@@ -1,0 +1,41 @@
+﻿@model AppUser
+@{
+	ViewData["Title"] = "userdetail";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>userdetail</h1>
+
+<div>
+	<h4>Mission</h4>
+	<hr />
+	<dl class="row">
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.UserName)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.UserName)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Email)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Email)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.RegisterDate)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.RegisterDate)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.LoginDate)
+		</dt>
+
+		<dt class="col-sm-2">
+			@Model.LoginDate.ToString("MM/dd/yyy")
+		</dt>
+		
+
+	</dl>
+</div>
